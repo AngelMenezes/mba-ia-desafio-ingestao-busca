@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from create_database import create_database
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -64,6 +65,7 @@ def build_vector_store(embeddings):
     return store
 
 def ingest_pdf():
+    create_database()
     PDF_PATH = os.getenv("PDF_PATH")
     if not PDF_PATH:
         raise ValueError("Defina a variável de ambiente PDF_PATH com o caminho do PDF.")
@@ -73,9 +75,8 @@ def ingest_pdf():
     enriched = enrich_documents(splits)
 
     ids = [f"doc-{i}" for i in range(len(enriched))]
-
+    
     embeddings = build_embeddings()
-
     store = build_vector_store(embeddings)
     store.add_documents(documents=enriched, ids=ids)
 
