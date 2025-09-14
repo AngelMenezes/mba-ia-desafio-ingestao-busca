@@ -24,13 +24,13 @@ def create_database():
     conn = psycopg.connect(conn_str)
     conn.autocommit = True
     cur = conn.cursor()
-    cur.execute("SELECT 1 FROM pg_database WHERE datname = 'desafio'")
+    cur.execute("SELECT 1 FROM pg_database WHERE datname = 'rag'")
     exists = cur.fetchone()
     if not exists:
-        cur.execute("CREATE DATABASE desafio")
-        print("Banco 'desafio' criado com sucesso.")
+        cur.execute("CREATE DATABASE rag")
+        print("Banco 'rag' criado com sucesso.")
     else:
-        print("Banco 'desafio' já existe.")
+        print("Banco 'rag' já existe.")
     cur.close()
     conn.close()
 	
