@@ -14,11 +14,6 @@ for k in ("OPENAI_API_KEY", "PGVECTOR_URL","PGVECTOR_COLLECTION"):
     if not os.getenv(k):
         raise RuntimeError(f"Environment variable {k} is not set")
     
-# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-# PDF_PATH = os.getenv("PDF_PATH")
-# PGVECTOR_URL = os.getenv("PGVECTOR_URL")
-# PG_VECTOR_COLLECTION = os.getenv("PGVECTOR_COLLECTION")
-
 def load_pdf(pdf_path: Path):
     loader = PyPDFLoader(str(pdf_path))
     docs = loader.load()
