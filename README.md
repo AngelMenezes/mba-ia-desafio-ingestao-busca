@@ -16,4 +16,4 @@ Permitir que o usuário faça perguntas via linha de comando (CLI) e receba resp
 python chat.py
 
 # Apagar o banco rag
-docker exec -it postgres_desafio psql -U postgres -c "DROP DATABASE rag;"
+docker exec -it postgres_rag psql -U postgres -c "DROP DATABASE rag;"
